@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WanAndroid</string>
+
+    <string name="tab_menu_alert">首页</string>
+    <string name="tab_menu_profile">体系</string>
+    <string name="tab_menu_pay">项目</string>
+    <string name="tab_menu_setting">我的</string>
+
+
+    <string name="form_username">请输入用户名</string>
+    <string name="form_password">请输入密码</string>
+    <string name="form_r_password">请再次输入密码</string>
+</resources>
