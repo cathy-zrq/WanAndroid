@@ -1,6 +1,7 @@
 package com.example.itsoftware.newwanandroid;
 
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ public class MyFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg1_content, container, false);
         TextView txt_content = (TextView) view.findViewById(R.id.txt_content);
-
+        //ActivityOpti1onsCompat
         return view;
     }
 }

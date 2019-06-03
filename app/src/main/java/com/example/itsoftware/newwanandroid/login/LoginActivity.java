@@ -1,6 +1,7 @@
 package com.example.itsoftware.newwanandroid.login;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.itsoftware.newwanandroid.R;
+import com.example.itsoftware.newwanandroid.sms.SMSMethod;
+
+import java.util.Random;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -19,6 +23,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextInputLayout  til_account;
     TextInputLayout til_password;
     Button  btnLogin;
+    private TimeCount time;
+    private Button btnSendMessage;
+    private String verifyCode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textView =findViewById(R.id.txt_register);
         textView.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+
+
+        time = new TimeCount(60000, 1000);
+        btnSendMessage=(Button) findViewById(R.id.send_Message);
+
+
     }
 
     @Override
@@ -86,24 +100,58 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     /**
-     * 验证密码
+     * 验证码校验
      * @param password
      * @return
      */
     private boolean validatePassword(String password) {
         if (TextUtils.isEmpty(password)) {
-            showError(til_password,"密码不能为空");
+            showError(til_password,"验证码不能为空");
             return false;
         }
-
-        if (password.length() < 6 || password.length() > 18) {
-            showError(til_password,"密码长度为6-18位");
-            return false;
-        }
-
         return true;
     }
 
+    public void  sendTextMessage(View view){
+        time.start();
+        verifyCode = String.valueOf(new Random().nextInt(899999) + 100000);//生成短信验证码
+        SMSMethod.getInstance(this).SendMessage(til_account.getEditText().getText().toString(),"您的验证码为:" + verifyCode+"，该码有效期为24小时，该码只能使用一次！【短信签名】");
+    }
 
+
+    class TimeCount extends CountDownTimer {
+
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+         //   btnSendMessage.setBackgroundColor(Color.parseColor("#B6B6D8"));
+            btnSendMessage.setClickable(false);
+            btnSendMessage.setText("("+millisUntilFinished / 1000 +") s后可重新发送");
+        }
+
+        @Override
+        public void onFinish() {
+            btnSendMessage.setText("重新获取");
+            btnSendMessage.setClickable(true);
+       //     btnSendMessage.setBackgroundColor(Color.parseColor("#4EB84A"));
+
+        }
+
+    }
+
+
+    @Override
+    protected void onPause() {
+        SMSMethod.getInstance(this).unregisterReceiver();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
 }

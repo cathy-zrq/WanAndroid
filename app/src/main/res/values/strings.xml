@@ -7,7 +7,8 @@
     <string name="tab_menu_setting">我的</string>
 
 
-    <string name="form_username">请输入用户名</string>
+    <string name="form_username">请输入手机号</string>
+    <string name="send_text_message">请输入验证码</string>
     <string name="form_password">请输入密码</string>
     <string name="form_r_password">请再次输入密码</string>
 </resources>
