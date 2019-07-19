@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/btnHome"
+            android:title="Home"
+            android:icon="@mipmap/home"
+            ></item>
+    <item
+            android:id="@+id/btnRecord"
+            android:title="Record"
+            android:icon="@mipmap/input"
+            ></item>
+    <item
+            android:id="@+id/btnDetail"
+            android:title="Detail"
+            android:icon="@mipmap/detail"
+            ></item>
+    <item
+            android:id="@+id/btnCategory"
+            android:title="Category"
+            android:icon="@mipmap/category"
+            ></item>
+</menu>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".act.InitActivity">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@mipmap/flash_bg"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:layout_alignParentRight="true"
+                android:id="@+id/txtSkip"
+                android:text="5S Skip"
+                android:layout_margin="20dp"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/financial_data"
+                    android:layout_height="100dp"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="@android:color/white"
+                    android:text="Finance Management System"
+                    android:layout_height="wrap_content"/>
+
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:textColor="@android:color/white"
+                    android:text="V1.0"
+                    android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
